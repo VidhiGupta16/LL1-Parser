@@ -1,10 +1,13 @@
- Predictive Parser Studio 
+# `README.md`
+
+````md
+# Predictive Parser Studio 🚀
 
 An interactive **LL(1) Parser Generator** built using **Python** and **Flask** that helps users understand compiler design concepts practically through grammar validation, FIRST & FOLLOW computation, parsing table generation, parsing visualization, and parse tree construction.
 
+---
 
-
- Project Overview
+## 📌 Project Overview
 
 Predictive Parser Studio is a web-based compiler design project that allows users to:
 
@@ -21,39 +24,39 @@ Predictive Parser Studio is a web-based compiler design project that allows user
 
 This project bridges the gap between compiler design theory and practical implementation.
 
+---
 
+## ✨ Features
 
- Features
+✅ Grammar Parsing and Preprocessing  
+✅ Left Recursion Removal  
+✅ Left Factoring  
+✅ FIRST Set Computation  
+✅ FOLLOW Set Computation  
+✅ LL(1) Parsing Table Generation  
+✅ Input String Validation  
+✅ Step-by-Step Parsing Visualization  
+✅ Parse Tree Construction  
+✅ Error Handling and Grammar Validation  
+✅ Flask-based Interactive Web Interface  
+✅ Recommendation for LR(0), SLR(1), CLR Parsing Techniques
 
-- Grammar Parsing and Preprocessing  
-- Left Recursion Removal  
-- Left Factoring  
-- FIRST Set Computation  
-- FOLLOW Set Computation  
-- LL(1) Parsing Table Generation  
-- Input String Validation  
-- Step-by-Step Parsing Visualization  
-- Parse Tree Construction  
-- Error Handling and Grammar Validation  
-- Flask-based Interactive Web Interface  
-- Recommendation for LR(0), SLR(1), CLR Parsing Techniques
+---
 
+## 🛠️ Tech Stack
 
-
- Tech Stack
-
- Backend
+### Backend
 - Python
 
- Web Framework
+### Web Framework
 - Flask
 
- Frontend
+### Frontend
 - HTML
 - CSS
 - JavaScript
 
- Compiler Design Concepts
+### Compiler Design Concepts
 - LL(1) Parsing
 - FIRST and FOLLOW
 - Parsing Table Generation
@@ -62,9 +65,9 @@ This project bridges the gap between compiler design theory and practical implem
 
 ---
 
- Project Structure
+## 📂 Project Structure
 
-
+```bash
 LL1_Parser/
 │
 ├── app.py                  # Main Flask application
@@ -247,4 +250,5 @@ id + id * id
 Predictive Parser Studio provides an interactive and practical approach to learning LL(1) parsing and compiler design concepts. It combines theory with implementation, making compiler construction easier to understand for students and beginners.
 
 ---
+
 
