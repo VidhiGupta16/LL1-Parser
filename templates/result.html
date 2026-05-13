@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f5f7fa;
+        }
+        .container {
+            margin-top: 40px;
+        }
+        table {
+            background: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2 class="text-center mb-4">LL(1) Parsing Result</h2>
+    <h4>Grammar Processing Steps</h4>
+
+    {% if logs %}
+        <ul>
+            {% for log in logs %}
+                <li>{{log}}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No Left Recursion or Left Factoring needed</p>
+    {% endif %}
+    <!-- FIRST -->
+    <h4>FIRST Set</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th>Non-Terminal</th>
+            <th>FIRST</th>
+        </tr>
+        {% for key, value in FIRST.items() %}
+        <tr>
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- FOLLOW -->
+    <h4>FOLLOW Set</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th>Non-Terminal</th>
+            <th>FOLLOW</th>
+        </tr>
+        {% for key, value in FOLLOW.items() %}
+        <tr>
+            <td>{{key}}</td>
+            <td>{{value}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- PARSING TABLE -->
+    <h4>Parsing Table</h4>
+    <table class="table table-bordered">
+        <tr>
+            <th>Non-Terminal</th>
+            {% set terminals = [] %}
+            {% for row in table.values() %}
+                {% for key in row.keys() %}
+                    {% if key not in terminals %}
+                        {% set _ = terminals.append(key) %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+
+            {% for t in terminals %}
+                <th>{{t}}</th>
+            {% endfor %}
+        </tr>
+
+        {% for nt, row in table.items() %}
+        <tr>
+            <td>{{nt}}</td>
+            {% for t in terminals %}
+                <td>{{row[t] if t in row else ""}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- STEPS -->
+    <h4>Parsing Steps</h4>
+    <table class="table table-striped">
+        <tr>
+            <th>Stack</th>
+            <th>Input</th>
+            <th>Action</th>
+        </tr>
+        {% for step in steps %}
+        <tr>
+            <td>{{step.stack}}</td>
+            <td>{{step.input}}</td>
+            <td>{{step.action}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- RESULT -->
+    <h4>Result</h4>
+    {% if result %}
+        <div class="alert alert-success">✅ String Accepted</div>
+    {% else %}
+        <div class="alert alert-danger">❌ String Rejected</div>
+    {% endif %}
+
+    <!-- LL1 -->
+    <h4>LL(1) Grammar?</h4>
+    {% if is_ll1 %}
+        <div class="alert alert-success">YES</div>
+    {% else %}
+        <div class="alert alert-danger">NO</div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
